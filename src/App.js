@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
+import AlbumList from './AlbumList'
+import Album from "./Album";
+import CustomModal from './Modal'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+          <Route path='/albums' component={AlbumList}/>
+          <Route exact path='/albums/:id(\d+)' component={Album}/>
+          <Route exact path='/albums/:id(\d+)/photo' component={CustomModal}/>
       </div>
     );
   }

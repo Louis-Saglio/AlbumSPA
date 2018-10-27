@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 
 export default class AlbumList extends Component{
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             albums: [],
         }
@@ -15,6 +15,8 @@ export default class AlbumList extends Component{
             albums: await (await fetch('https://jsonplaceholder.typicode.com/albums')).json()
         })
     }
+
+    // No need of componentDidUpdate because this is static
 
     render() {
         return (

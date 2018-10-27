@@ -3,14 +3,14 @@ import Photo from './Photo'
 
 export default class Album extends Component{
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             photos: [],
-            title: '',
+            title: undefined,
             id: undefined,
             authorId: undefined,
-            author: {}
+            author: {},
         }
     }
 
@@ -38,16 +38,22 @@ export default class Album extends Component{
         if (this.props.match.params.id !== prevState.id) {
             this.setState({
                 id: this.props.match.params.id,
-                authorId: this.props.location.authorId
             });
             this.setState({
                 photos: await this.fetchPhotos(),
-                author: await this.fetchAuthor()
             });
         }
         if (this.props.location.title !== prevState.title) {
             this.setState({
                 title: this.props.location.title
+            })
+        }
+        if (this.props.location.authorId !== prevState.authorId) {
+            this.setState({
+                authorId: this.props.location.authorId
+            });
+            this.setState({
+                author: await this.fetchAuthor()
             })
         }
     }

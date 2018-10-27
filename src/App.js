@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 import AlbumList from './AlbumList'
 import Album from "./Album";
-import CustomModal from './Modal'
+import PhotoModal from './PhotoModal'
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           </Link>
           <Route path='/albums' component={AlbumList}/>
           <Route exact path='/albums/:id(\d+)' component={Album}/>
-          <Route exact path='/albums/:id(\d+)/photo' component={CustomModal}/>
+          <Route exact path='/albums/:albumId(\d+)/photos/:photoId(\d+)' component={PhotoModal}/>
       </div>
     );
   }

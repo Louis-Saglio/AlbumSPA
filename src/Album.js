@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Photo from './Photo'
 
 export default class Album extends Component{
 
@@ -57,16 +58,13 @@ export default class Album extends Component{
             <div>
                 <h1>Album {this.state.id}</h1>
                 <p>{this.state.title}</p>
-                <div>
-                    <ul>
-                        <li>{this.state.author.name}</li>
-                        <li>{this.state.author.username}</li>
-                        <li>{this.state.author.email}</li>
-                        <li>{this.state.author.phone}</li>
-                    </ul>
-                    // Modal link
-                </div>
-                {this.state.photos.map(photo => <img key={photo.id} src={photo.thumbnailUrl} alt={photo.title}/>)}
+                <ul>
+                    <li>{this.state.author.name}</li>
+                    <li>{this.state.author.username}</li>
+                    <li>{this.state.author.email}</li>
+                    <li>{this.state.author.phone}</li>
+                </ul>
+                {this.state.photos.map(photo => <Photo key={photo.id} id={photo.id} url={photo.url} thumbnailUrl={photo.thumbnailUrl} title={photo.title} albumId={this.state.id}/>)}
             </div>
         );
     }

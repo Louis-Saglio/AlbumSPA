@@ -23,6 +23,7 @@ export default class Album extends Component{
     }
 
     async componentDidMount() {
+        // move to constructor
         this.setState({
             title: this.props.location.title,
             authorId: this.props.location.authorId,
@@ -43,12 +44,13 @@ export default class Album extends Component{
                 photos: await this.fetchPhotos(),
             });
         }
-        if (this.props.location.title !== prevState.title) {
+        // check if not undefined because we don't want to change when we click on modal
+        if (this.props.location.title !== undefined && this.props.location.title !== prevState.title) {
             this.setState({
                 title: this.props.location.title
             })
         }
-        if (this.props.location.authorId !== prevState.authorId) {
+        if (this.props.location.authorId !== undefined && this.props.location.authorId !== prevState.authorId) {
             this.setState({
                 authorId: this.props.location.authorId
             });

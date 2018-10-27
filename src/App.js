@@ -12,7 +12,8 @@ class App extends Component {
               Album list
           </Link>
           <Route path='/albums' component={AlbumList}/>
-          <Route exact path='/albums/:id(\d+)' component={Album}/>
+          <Route exact path='/albums?page=(\d+)' component={AlbumList}/>  {/* GET body is considered as url path */}
+          <Route path='/albums/:id(\d+)' component={Album}/>
           <Route exact path='/albums/:albumId(\d+)/photos/:photoId(\d+)' component={PhotoModal}/>
       </div>
     );
